@@ -1,7 +1,9 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
-@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>
+@model PagedList.IPagedList<#= "<" + ViewDataTypeName + ">" #>
+@using PagedList.Mvc;
+ <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
 if(IsPartialView) {
@@ -62,7 +64,7 @@ foreach (PropertyMetadata property in properties) {
         }
 #>
         <th>
-            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().<#= GetValueExpression(property) #>)
         </th>
 <#
     }
@@ -95,9 +97,14 @@ string pkName = GetPrimaryKeyName();
 if (pkName != null) {
 #>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.<#= pkName #> }) |
-            @Html.ActionLink("Details", "Details", new { id=item.<#= pkName #> }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.<#= pkName #> })
+            <a href="@Url.Action("Edit", new { id=item.<#= pkName #> })">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span class="sr-only">Editar</span>
+            </a>
+
+            @Html.ActionLink("Alterar", "Edit", new { id=item.<#= pkName #> }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.<#= pkName #> }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.<#= pkName #> })
         </td>
 <#
 } else {
@@ -114,6 +121,10 @@ if (pkName != null) {
 }
 
 </table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <#
 // The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
 #>
