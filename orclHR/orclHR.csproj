@@ -153,45 +153,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\bdHR.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdHR.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\bdHR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\bdHR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdHR.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\COUNTRIES.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DEPARTMENTS.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EMPLOYEES.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EMP_DETAILS_VIEW.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JOBS.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JOB_HISTORY.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LOCATIONS.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\REGIONS.cs">
-      <DependentUpon>bdHR.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -205,23 +166,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\bdHR.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>bdHR.edmx</DependentUpon>
-      <LastGenOutput>bdHR.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\bdHR.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>bdHR.edmx</DependentUpon>
-      <LastGenOutput>bdHR.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\bdHR.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>bdHR.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\bdHR.edmx.diagram">
-      <DependentUpon>bdHR.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -259,7 +203,9 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -277,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
